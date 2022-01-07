@@ -1,6 +1,14 @@
 {
   "expo": {
     "name": "BuddySplitHnR2022",
+    "plugins": [
+      [
+        "react-native-vision-camera",
+        {
+          "cameraPermissionText": "$(PRODUCT_NAME) needs access to your Camera."
+        }
+      ]
+    ],
     "slug": "BuddySplitHnR2022",
     "version": "1.0.0",
     "orientation": "portrait",
