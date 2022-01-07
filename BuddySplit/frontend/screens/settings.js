@@ -1,6 +1,6 @@
 import React from 'react';
 import tailwind from 'tailwind-rn';
-import { Layout, Text } from '@ui-kitten/components';
+import { Layout, RangeDatepicker, Text } from '@ui-kitten/components';
 
 export default Settings = () => {
     return (
