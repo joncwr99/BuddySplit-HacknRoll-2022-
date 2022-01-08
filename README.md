@@ -4,8 +4,8 @@ BuddySplit is a receipt scanner application that helps you to store and split th
 
 Features:
 * Scan receipt and list out all items
-* Assign specific item to different payee to ensure accurate repayment
-* Store past recipts for budget tracking
+* Assign specific items to different payees to ensure accurate repayment
+* Store past receipts for budget tracking
 * Share receipt to remind friends to repay you
 
 View the Figma prototype [here](https://www.figma.com/proto/jnl0NufheV3VGUAwLjLrSC/BuddySplit?node-id=7%3A180&scaling=scale-down&page-id=0%3A1&starting-point-node-id=8%3A4&show-proto-sidebar=1)
