@@ -14,49 +14,52 @@ export default PayeeInfo = ({ route }) => {
   const numberOfPayee = payeeInfo();
   const serviceCharge = payeeInfo();
   const gstCharge = payeeInfo();
-  
+
   return (
     <React.Fragment>
-    <Layout style = {tailwind("flex-col justify-between items-center")}>
-    <Layout style={tailwind("flex-row items-center mb-2")}>
-      <Text> Number of Payee </Text>
-      <Input
-        keyboardType="numeric"
-        style={styles.input}
-        size='small'
-        placeholder='0'
-        {...numberOfPayee}
-      />
-    </Layout>
+      <Layout style = {tailwind("flex-col justify-between items-center")}>
+        <Layout style={tailwind("flex-row items-center mb-2")}>
+          <Text> Number of Payee </Text>
+          <Input
+            keyboardType="numeric"
+            style={styles.input}
+            size='small'
+            placeholder='0'
+            {...numberOfPayee}
+          />
+        </Layout>
 
-    <Layout style={tailwind("flex-row items-center mb-2")} level='1'>
-      <Text> Service Charge </Text>
-      <Input
-        keyboardType="numeric"
-        style={styles.input}
-        size='small'
-        placeholder='0'
-        {...serviceCharge}
-      />
-      <Text style={tailwind('left-1')}>%</Text>
-    </Layout>
+        <Layout style={tailwind("flex-row items-center mb-2")} level='1'>
+          <Text> Service Charge </Text>
+          <Input
+            keyboardType="numeric"
+            style={styles.input}
+            size='small'
+            placeholder='0'
+            {...serviceCharge}
+          />
+          <Text style={tailwind('left-1')}>%</Text>
+        </Layout>
 
-    <Layout style={tailwind("flex-row items-center mb-2")} level='1'>
-      <Text> GST Charge </Text>
-      <Input
-        keyboardType="numeric"
-        style={styles.input}
-        size='small'
-        placeholder='0'
-        {...gstCharge}
-      />
-    <Text style={tailwind('left-1')}>%</Text>
-    </Layout>
+        <Layout style={tailwind("flex-row items-center mb-2")} level='1'>
+          <Text> GST Charge </Text>
+          <Input
+            keyboardType="numeric"
+            style={styles.input}
+            size='small'
+            placeholder='0'
+            {...gstCharge}
+          />
+        <Text style={tailwind('left-1')}>%</Text>
+        </Layout>
 
-      <Button onPress = {() => {navigation.navigate("Camera")}}>
-        Back Btn for Now
-      </Button>
-    </Layout>
+          <Button onPress = {() => {
+            let item = {ItemDetails: route.params, NumPayee: numberOfPayee.value, Service: serviceCharge.value, GST: gstCharge.value}
+            console.log("here: ", item);
+            navigation.navigate("ItemSelection", item)}}>
+            Proceed
+          </Button>
+      </Layout>
     </React.Fragment>
   );
 };

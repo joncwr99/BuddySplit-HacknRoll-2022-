@@ -2,79 +2,79 @@ import React from 'react';
 import tailwind from 'tailwind-rn';
 import { Text, Layout, Divider, List, ListItem, Button } from '@ui-kitten/components';
 import { useNavigation } from '@react-navigation/native';
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
+import Counter from "react-native-counters";
 
-
-
-const calculateTotal = (priceList) => {
-    let total = 0
-    for(let i = 0; i < priceList.length; i++){
-        total = total + parseFloat(priceList[i])
-    }
-    return total;
+const plusMinusBtn = () => {
+    return(
+        <Counter start={1} onChange={(number, type) => onChange(number, type)} />
+    )
 }
-  
-const SplitPage = ( props ) => {
 
-    const format = (price) => {
-        console.log(price);
-        return(
-            // <Layout>
-            //     <Layout style={tailwind("flex-row ")}>
-            //         <Text style={tailwind("text-xs right-20 tracking-wide")} > {price} </Text>
-            //     </Layout>
-            // </Layout>
-            <Layout>
-                <Text size='xs' style={{fontSize: 8}}>
-                    {price}
-                </Text>
-            </Layout>
-        )
-    }
+const SelectPage = ( props ) => {
     
-    console.log("this is here:" + props.price);
     const renderItem = ({ item, index }) => (
         
       <ListItem
-        accessoryRight = { format(props.price[index]) }
-        title={`${index + 1}.      ${item}`}
+        // TODO: Get it working ... 
+        // accessoryRight = {plusMinusBtn}
+        title={`${index + 1}.      ${item} `}
         //description={`${item.description} ${index + 1}`}
       />
     );
   
     return (
-        <Layout>
+        <View key={props.index}>
+            <Text style={tailwind("text-center font-bold")}> Payee {props.index+1}</Text>
             <List
                 style = {tailwind('')}
                 data={props.item}
                 ItemSeparatorComponent={Divider}
                 renderItem={renderItem}
             />
-            <Divider/>
-            <Layout style = {tailwind("flex-row m-1")}>
+            {/* <Layout style = {tailwind("flex-row m-1")}>
                 <Text style = {tailwind('font-bold ml-10 right-8 ')}> SubTotal:  </Text>
                 <Text style = {tailwind('font-bold ml-20 pl-20 left-12')}> {calculateTotal(props.price).toFixed(2)} </Text> 
-            </Layout>
-        </Layout>
+            </Layout> */}
+        </View>
     );
   };
   
+renderLists = (item, numPax) => {
+    var output = [];
+    for(let i = 0; i < numPax; i ++) {
+        var tempItem = (
+            <ScrollView key = {i}>
+                <SelectPage 
+                    item = {item}
+                    index = {i}
+                />
+            </ScrollView>
+        );
+        output[i] = (tempItem);
+    }
 
+    return(
+        output
+    )
+}
 
-export default SplitApp = ({ route }) => {
+export default ItemSelection = ({ route }) => {
     const navigation = useNavigation();
+     
+
+    //console.log(route.params);
     return (
         <Layout style={tailwind("flex-1 ")}>
             <Layout style = {tailwind("flex-row m-2")}>
                 <Text style = {tailwind('font-bold ml-10 right-8')}> Item(s) </Text>
-                <Text style = {tailwind('font-bold ml-20 pl-20 left-20')}> Price </Text> 
+                <Text style = {tailwind('font-bold ml-20 pl-20 left-20')}> Quantity </Text> 
             </Layout>
+            <ScrollView key = {1}>
+                {renderLists(route.params.ItemDetails.item, route.params.NumPayee)}
+            </ScrollView>
             
-            <SplitPage 
-                item = {route.params.item}
-                price = {route.params.price}
-            />
-            <Layout style = {tailwind("justify-center m-1 flex-row")}>
+            {/* <Layout style = {tailwind("justify-center m-1 flex-row")}>
                 <Button 
                     style={tailwind("items-center")}
                     onPress = {() => {navigation.navigate("PayeeInfo", route.params)}}
@@ -84,7 +84,7 @@ export default SplitApp = ({ route }) => {
                     style={tailwind("items-center left-2")}
                     onPress = {() => {navigation.navigate("View History")}}
                 > Save </Button>
-            </Layout>
+            </Layout> */}
         </Layout>
     )
 }
