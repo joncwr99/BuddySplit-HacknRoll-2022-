@@ -18,7 +18,8 @@ We wrote the application using React Native and frameworks such as UI-Kitten, ex
 View the Figma prototype [here](https://www.figma.com/proto/jnl0NufheV3VGUAwLjLrSC/BuddySplit?node-id=7%3A180&scaling=scale-down&page-id=0%3A1&starting-point-node-id=8%3A4&show-proto-sidebar=1)
 
 ## Our Application Expo Link
-Try BuddySplit's Prototype [here](exp://7j-c2v.anonymous.buddysplit.exp.direct:80)
+Try BuddySplit's Prototype
+exp://7j-c2v.anonymous.buddysplit.exp.direct:80
 
 ## Accomplishments that we're proud of
 1. Good team coordination, our team is splitter into 2 groups: one works with the Front-end of the app, and the other works with the back-end of the app. We managed to get some of the core features up and working.
